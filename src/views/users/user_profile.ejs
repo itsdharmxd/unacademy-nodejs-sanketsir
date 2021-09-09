@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/user_profile.css">
+<h1>User Profile </h1>
+
+
+<% if(user.id == profile_user.id) { %> 
+<h3>Update Profile</h3>
+<form action="/users/update/<%= profile_user.id %> " method="POST">
+    <input type="text" name="name" placeholder="Your name" value="<%= profile_user.name %>">
+    <input type="submit" value="Update User">
+</form>
+
+<form action="/users/updateAvatar" method="post" enctype="multipart/form-data">
+    <input type="file" name="avatar" />
+    <input type="submit" value="Update Avatar">
+</form>
+
+<% } %> 
+
+
+<div class="row no-gutters">
+    <div class="col-md-4">
+        <p><%= profile_user.name %></p>
+    </div>
+    <div class="col-md-4">
+        <p><%= profile_user.email %></p>
+
+    </div>
+    <div class="col-md-4">
+        
+        ​<picture>
+            <source srcset="/users/images/<%= profile_user.avatar %> " type="image/svg+xml">
+            <img src="/users/images/<%= profile_user.avatar %> " class="img-thumbnail" alt="...">
+        </picture>
+
+    </div>
+</div>
+
+
